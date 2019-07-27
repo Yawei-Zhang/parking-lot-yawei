@@ -1,6 +1,10 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class ParkingLot {
     private final int capability;
     private int availableSpaceCount;
+    private List<Car> parkingCars = new ArrayList<>();
 
     public ParkingLot(int capability) {
         this.capability = capability;
@@ -11,7 +15,16 @@ public class ParkingLot {
         if (availableSpaceCount == 0) {
             return "Parking lot is full !";
         }
-        availableSpaceCount--;
-        return "Parking Successful !";
+        parkingCars.add(car);
+        availableSpaceCount = capability - parkingCars.size();
+        return "Parking successful !";
+    }
+
+    public String getCar(Car car) {
+        if(parkingCars.contains(car)) {
+            availableSpaceCount++;
+            return "Getting successful !";
+        }
+        return "Getting failed !";
     }
 }

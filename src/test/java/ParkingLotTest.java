@@ -13,7 +13,7 @@ public class ParkingLotTest {
         String result = parkingLot.parkCar(car);
 
         //Then
-        assertEquals("Parking Successful !", result);
+        assertEquals("Parking successful !", result);
     }
 
     @Test
@@ -43,5 +43,18 @@ public class ParkingLotTest {
 
         //Then
         assertEquals("Getting successful !", result);
+    }
+
+    @Test
+    public void shouldReturnGettingFailedWhenGettingACarFromParkingLotGivenAParkingLotWithoutTheCar() {
+        //Given
+        ParkingLot parkingLot = new ParkingLot(1);
+        Car car = new Car();
+
+        //When
+        String result = parkingLot.getCar(car);
+
+        //Then
+        assertEquals("Getting failed !", result);
     }
 }
